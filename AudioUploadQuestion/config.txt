@@ -1,0 +1,38 @@
+<plugin>
+  <name>AudioUploader</name>
+  <version>1.0</version>
+  <description>Plugin for uploading audio files using the file upload mask question type</description>
+  <author>Alejandro Gallon</author>
+  <authorEmail>alejandrogallon@gmail.com</authorEmail>
+  <authorWebsite>https://www.example.com</authorWebsite>
+  <minimumVersion>3.0</minimumVersion>
+  <maximumVersion>4.0</maximumVersion>
+  <files>
+    <file>audioUploader.php</file>
+  </files>
+  <settings>
+    <setting>
+      <name>audio_upload_path</name>
+      <label>Audio Upload Path</label>
+      <type>text</type>
+      <default>/path/to/audio/files</default>
+    </setting>
+  </settings>
+  <events>
+    <event>
+      <name>beforeSurveyPage</name>
+      <function>audioUploader::beforeSurveyPage</function>
+    </event>
+    <event>
+      <name>newSurveySettings</name>
+      <function>audioUploader::newSurveySettings</function>
+    </event>
+  </events>
+  <questionTypes>
+    <questionType>
+      <name>fileuploadmask</name>
+      <description>File Upload Mask</description>
+      <render>fileuploadmask</render>
+    </questionType>
+  </questionTypes>
+</plugin>
