@@ -10,7 +10,9 @@
 
 ## Overview
 
-This Lime Survey plugin, named `AudioUploadQuestion`, introduces a new question type allowing users to upload audio files. The plugin includes a File Handling Module that activates an "Enable audio upload" option in the Lime Survey question settings.
+Integrating an audio player, a file upload field, and a hidden input field into the Lime Survey question:
+
+This Lime Survey plugin, named `AudioUploadQuestion`, will allow users to upload audio files. The plugin includes a File Handling Module that activates an "Enable audio upload" option in the Lime Survey question settings.
 
 ### Lime Survey Environment
 
@@ -152,6 +154,55 @@ This snippet primarily handles the successful upload of an audio file and prepar
         - `$this->subscribe('newQuestionAttributes');` subscribes the plugin to the event `newQuestionAttributes`, indicating that the plugin wants to be notified when new question attributes are being set.
 
 In summary, this PHP snippet defines the `AudioUploadQuestion` class, sets some properties related to the plugin, and subscribes the plugin to specific Lime Survey events. These events allow the plugin to perform actions at key points in the Lime Survey question rendering process.
+
+#HTML and JavaScript
+
+Generating HTML and JavaScript code that integrates an audio player, a file upload field, and a hidden input field into the Lime Survey question's HTML. Let's break down the key components:
+
+1. **Audio Player:**
+    ```html
+    <audio controls><source src="' . $audioUrl . '" type="audio/mpeg"></audio>
+    ```
+    - This line creates an HTML5 audio player with playback controls. The `src` attribute is dynamically set using the `$audioUrl` variable, which contains the URL of the uploaded audio file.
+
+2. **File Upload Field:**
+    ```html
+    <input type="file" id="audioUpload" name="audioUpload">
+    ```
+    - This line adds an input field of type "file," allowing users to choose and upload an audio file. The `id` is set to "audioUpload" for easy identification in JavaScript.
+
+3. **Hidden Input Field for Question ID:**
+    ```html
+    <input type="hidden" id="qid" name="qid" value="' . $event->get('qid') . '">
+    ```
+    - This line creates a hidden input field (`type="hidden"`) to store the question ID. The value is set dynamically using the Lime Survey event system (`$event->get('qid')`).
+
+4. **Upload Button and JavaScript Function:**
+    ```html
+    <button onclick="uploadAudio()">Upload</button>
+   ````
+    
+   ```javasctipt
+    <script>
+    function uploadAudio() {
+        var fileInput = document.getElementById("audioUpload");
+        var file = fileInput.files[0];
+        var qid = document.getElementById("qid").value;
+        var formData = new FormData();
+        formData.append("audioUpload", file);
+        formData.append("qid", qid);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/limesurvey/myproject/upload.php", true);
+        xhr.send(formData);
+    }
+    </script>
+    ```
+    - This section adds a "Upload" button to trigger the file upload process. The button is associated with a JavaScript function named `uploadAudio()`.
+    - The `uploadAudio()` function retrieves the selected audio file, the question ID, and creates a `FormData` object to prepare data for the HTTP request.
+    - An XMLHttpRequest is then used to send a POST request to the server-side script (`upload.php`) responsible for handling the file upload.
+
+Overall, this code snippet enhances the Lime Survey question by allowing users to upload audio files. The HTML and JavaScript create a user-friendly interface with an audio player and a file upload button, while the associated script handles the asynchronous file upload process to the server.
 
 
 ### config.xml (for LS4: https://manual.limesurvey.org/Make_your_plugin_compatible_with_LS4)
