@@ -182,9 +182,8 @@ Generating HTML and JavaScript code that integrates an audio player, a file uplo
     ```html
     <button onclick="uploadAudio()">Upload</button>
     ```
-    
-   ```javasctipt
-    <script>
+   
+    ```javasctipt
     function uploadAudio() {
         var fileInput = document.getElementById("audioUpload");
         var file = fileInput.files[0];
@@ -197,8 +196,9 @@ Generating HTML and JavaScript code that integrates an audio player, a file uplo
         xhr.open("POST", "http://localhost/limesurvey/myproject/upload.php", true);
         xhr.send(formData);
     }
-    </script>
-    ```
+   ````
+   
+    
     - This section adds a "Upload" button to trigger the file upload process. The button is associated with a JavaScript function named `uploadAudio()`.
     - The `uploadAudio()` function retrieves the selected audio file, the question ID, and creates a `FormData` object to prepare data for the HTTP request.
     - An XMLHttpRequest is then used to send a POST request to the server-side script (`upload.php`) responsible for handling the file upload.
