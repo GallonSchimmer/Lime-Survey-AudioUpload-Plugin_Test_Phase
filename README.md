@@ -154,51 +154,47 @@ This snippet primarily handles the successful upload of an audio file and prepar
 In summary, this PHP snippet defines the `AudioUploadQuestion` class, sets some properties related to the plugin, and subscribes the plugin to specific Lime Survey events. These events allow the plugin to perform actions at key points in the Lime Survey question rendering process.
 
 
-### config.xml (Not Provided - Add if necessary)
+### config.xml (for LS4: https://manual.limesurvey.org/Make_your_plugin_compatible_with_LS4)
 
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<plugin>
-    <name>Audio Upload Question</name>
-    <type>question</type>
-    <creationDate>2023-12-07</creationDate>
-    <lastUpdate>2023-12-07</lastUpdate>
-    <author>
-        <name>Your Name</name>
-        <authorUrl>http://www.example.com</authorUrl>
-        <email>your.email@example.com</email>
-    </author>
-    <version>1.0</version>
-    <license>GPL</license>
-    <description>
-        This Lime Survey plugin introduces a new question type allowing users to upload audio files.
-    </description>
-    <supportUrl>http://www.example.com/support</supportUrl>
-    <compatibility>
-        <version>3.x</version>
-    </compatibility>
-    <updaters>
-        <updater>
-            <version>1.0</version>
-            <url>http://www.example.com/update.xml</url>
-        </updater>
-    </updaters>
-    <config>
-        <!-- Add your configuration settings here -->
-        <!-- Example configuration setting: -->
-        <setting>
-            <name>enableAudioUpload</name>
-            <type>integer</type>
-            <default>0</default>
-            <label>Enable Audio Upload</label>
-            <help>If set to 1, audio file upload will be enabled for this question.</help>
-        </setting>
-    </config>
-</plugin>
+This XML snippet represents the configuration file (`config.xml`) for a Lime Survey plugin named "Audio Upload Question." Here's an explanation of the different sections within the XML:
 
-```
+1. **XML Declaration:**
+    ```xml
+    <?xml version="1.0" encoding="UTF-8" ?>
+    ```
+    - This line specifies the XML version and character encoding used in the file.
 
+2. **Plugin Root Element:**
+    ```xml
+    <plugin>
+    ```
+    - This element marks the beginning of the XML document for the Lime Survey plugin configuration.
 
+3. **Plugin Metadata:**
+    - `<name>`: Specifies the name of the plugin.
+    - `<type>`: Indicates the type of the plugin (e.g., "question" in this case).
+    - `<creationDate>`: Shows the date when the plugin was created.
+    - `<lastUpdate>`: Indicates the last update date of the plugin.
+    - `<author>`: Contains information about the author, including name, URL, and email.
+    - `<version>`: Specifies the version number of the plugin.
+    - `<license>`: Specifies the license under which the plugin is released (e.g., GPL).
+    - `<description>`: Provides a brief description of the plugin's functionality.
+    - `<supportUrl>`: Specifies the URL where users can find support for the plugin.
+    - `<compatibility>`: Indicates the Lime Survey version compatibility, e.g., compatible with version 3.x.
 
+4. **Updater Information:**
+    - `<updaters>`: Contains information about plugin updaters.
+        - `<updater>`: Specifies details about a specific updater.
+            - `<version>`: Specifies the version number of the updater.
+            - `<url>`: Provides the URL where the updater file (`update.xml`) can be found.
 
+5. **Configuration Settings:**
+    - `<config>`: This section includes configuration settings for the plugin.
+        - `<setting>`: Defines an individual configuration setting.
+            - `<name>`: Specifies the name of the setting.
+            - `<type>`: Specifies the data type of the setting (e.g., "integer" in this case).
+            - `<default>`: Specifies the default value for the setting.
+            - `<label>`: Provides a user-friendly label for the setting.
+            - `<help>`: Offers a description or help text for the setting.
 
+This XML file is crucial for defining the metadata, version information, and configuration settings of the Lime Survey plugin. It is used by Lime Survey to understand how the plugin should be integrated and behave within the Lime Survey environment. Plugin developers customize this file based on the specific requirements and features of their plugins.
