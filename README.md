@@ -155,7 +155,8 @@ This snippet primarily handles the successful upload of an audio file and prepar
 
 In summary, this PHP snippet defines the `AudioUploadQuestion` class, sets some properties related to the plugin, and subscribes the plugin to specific Lime Survey events. These events allow the plugin to perform actions at key points in the Lime Survey question rendering process.
 
-#HTML and JavaScript
+
+##HTML and JavaScript (part of the `AudioUploadQuestion` class)
 
 Generating HTML and JavaScript code that integrates an audio player, a file upload field, and a hidden input field into the Lime Survey question's HTML. Let's break down the key components:
 
@@ -180,7 +181,7 @@ Generating HTML and JavaScript code that integrates an audio player, a file uplo
 4. **Upload Button and JavaScript Function:**
     ```html
     <button onclick="uploadAudio()">Upload</button>
-   ````
+    ```
     
    ```javasctipt
     <script>
