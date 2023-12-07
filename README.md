@@ -160,6 +160,8 @@ In summary, this PHP snippet defines the `AudioUploadQuestion` class, sets some 
 
 Generating HTML and JavaScript code that integrates an audio player, a file upload field, and a hidden input field into the Lime Survey question's HTML. Let's break down the key components:
 
+### HTML Example
+
 1. **Audio Player:**
     ```html
     <audio controls><source src="' . $audioUrl . '" type="audio/mpeg"></audio>
@@ -182,8 +184,9 @@ Generating HTML and JavaScript code that integrates an audio player, a file uplo
     ```html
     <button onclick="uploadAudio()">Upload</button>
     ```
-   
-    ```javasctipt
+   ### JavaScript Example
+
+   ```javascript
     function uploadAudio() {
         var fileInput = document.getElementById("audioUpload");
         var file = fileInput.files[0];
@@ -196,7 +199,7 @@ Generating HTML and JavaScript code that integrates an audio player, a file uplo
         xhr.open("POST", "http://localhost/limesurvey/myproject/upload.php", true);
         xhr.send(formData);
     }
-   ````
+   ```
    
     
     - This section adds a "Upload" button to trigger the file upload process. The button is associated with a JavaScript function named `uploadAudio()`.
